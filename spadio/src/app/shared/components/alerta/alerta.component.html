@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{alerta.titulo}}</h1>
+<div mat-dialog-content>{{alerta.descricao}}</div>
+<div mat-dialog-actions>
+    <button [color]="alerta.corBtn" mat-raised-button [mat-dialog-close]='true'>{{alerta.btnSucesso}}</button>
+    <button color="primary" mat-raised-button [mat-dialog-close]='false' *ngIf='alerta.possuiDoisBtn'>{{alerta.btnCancelar}}</button>
+</div>
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

@@ -1,0 +1,32 @@
+table{
+    width: 100%;
+}
+#botaoadd{
+    margin: 20px;
+    float: right;
+    margin-right: 100px;
+}
+.foto{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.mr-5{
+    margin-right: 10px;
+}
+.center{
+    text-align: center;
+}
+.full-width{
+    width: 100%;
+}
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#filter{
+    width: calc(100% - 40px);
+}

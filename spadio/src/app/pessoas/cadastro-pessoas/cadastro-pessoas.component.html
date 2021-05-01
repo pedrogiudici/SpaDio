@@ -1,0 +1,28 @@
+<mat-toolbar class="app-title">Cadastrar Usuário</mat-toolbar>
+<div class="main-div">
+  <mat-card class="full-width" *ngIf='cadastro'>
+    <form autocomplete="off" [formGroup]='cadastro' (ngSubmit)='submit()'>
+      <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome *" name="nome" formControlName='nome'>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.nome, "required")'>Campo obrigatório</mat-error>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.nome, "minlength")'>Campo precisa ter no mínimo 2 caracteres</mat-error>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.nome, "maxlength")'>Campo só pode ter no máximo 256 caracteres</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email *" name="email" formControlName='email'>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.email, "required")'>Campo obrigatório</mat-error>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.email, "email")'>Email inválido</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Link Foto" name="urlFoto" formControlName='urlFoto'>
+            <mat-error *ngIf='validacao.hasErrorValidator(f.urlFoto, "minlength")'>Campo precisa ter no mínimo 10 caracteres</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" color="primary" mat-raised-button>Salvar</button>
+          <button (click)='voltar()' color="warn" mat-raised-button>Cancelar</button>
+        </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

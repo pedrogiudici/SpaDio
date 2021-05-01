@@ -1,0 +1,47 @@
+<button id="botaoadd" mat-raised-button color="primary" [routerLink]="['/pessoas/cadastro']">Adicionar usuário</button>
+<form autocomplete="off" [formGroup]='filtrosListagem' class="center">
+  <mat-form-field id="filter">
+    <input matInput placeholder="Pesquise aqui" name="texto" formControlName='texto'>
+  </mat-form-field>
+</form>
+<table mat-table [dataSource]="pessoas" *ngIf='pessoas.length;else semRegistro' class="mat-elevation-z8" infiniteScroll (scrolled)='onScroll()'>
+
+
+    <ng-container matColumnDef="urlFoto">
+      <th mat-header-cell *matHeaderCellDef class="center"> Foto </th>
+      <td mat-cell *matCellDef="let element" class="center"> <img class="foto" [src]="element.urlFoto || semFoto"></td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef class="center"> Nome </th>
+      <td mat-cell *matCellDef="let element" class="center"> {{element.nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="center">Email </th>
+      <td mat-cell *matCellDef="let element" class="center"> {{element.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef class="center"> Data </th>
+      <td mat-cell *matCellDef="let element" class="center"> {{element.data | date : 'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="botoes">
+      <th mat-header-cell *matHeaderCellDef class="center"> Botões </th>
+      <td mat-cell *matCellDef="let element" class="center">
+        <button class="mr-5" mat-fab color="primary" (click)='edit(element.id)'>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-fab color="warn" (click)='delete(element.id)'>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado</h1>
+</ng-template>
